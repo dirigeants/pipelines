@@ -1,5 +1,6 @@
 parameters:
   masterOnly: 'false'
+  type: 'docs'
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
@@ -40,12 +41,13 @@ jobs:
         git add --all .
         git config user.name "Azure Pipelines"
         git config user.email "${COMMIT_EMAIL}"
-        git commit -m "Docs build: ${SHA}" || true
+        git commit -m "${TYPE} build: ${SHA}" || true
         git push "https://${GH_TOKEN}@${GH_REF}" $TARGET_BRANCH
       env:
         BRANCH: $(Build.SourceBranchName)
         BUILD_REASON: $(Build.Reason)
         MASTER_ONLY: ${{ parameters.masterOnly }}
+        TYPE: ${{ parameters.type }}
         COMMIT_EMAIL: $(commitEmail)
         GH_TOKEN: $(ghToken)
         GH_REF: ${{ parameters.ghRef }}
