@@ -2,7 +2,7 @@ parameters:
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
-  condition: success()
+  condition: ''
 
 jobs:
 - job: "Documentation"
