@@ -1,6 +1,7 @@
 parameters:
   masterOnly: 'false'
   type: 'Docs'
+  command: 'docs'
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
@@ -22,7 +23,7 @@ jobs:
         
         if [[ ("$MASTER_ONLY" = "true" && "$BRANCH" != "master") || "$BUILD_REASON" != "IndividualCI" ]]; then
           echo -e "Not building for a non branch push - building without deploying."
-          yarn run docs
+          yarn run ${{ parameters.command }}
           exit 0
         fi
 
@@ -31,11 +32,11 @@ jobs:
         REPO=$(git config remote.origin.url)
         SHA=$(git rev-parse --verify HEAD)
 
-        git clone $REPO dist -b $TARGET_BRANCH
+        git clone $REPO out -b $TARGET_BRANCH
 
-        yarn run docs
+        yarn run ${{ parameters.command }}
 
-        rsync -vau docs/ dist/
+        rsync -vau dist/ out/
 
         cd dist
         git add --all .
