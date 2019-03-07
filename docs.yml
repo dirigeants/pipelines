@@ -1,13 +1,13 @@
 parameters:
   masterOnly: 'false'
-  type: 'docs'
+  type: 'Docs'
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
   versionSpec: '10.x'
 
 jobs:
-- job: "Documentation"
+- job: ${{ parameters.type }}
   dependsOn: ${{ parameters.dependsOn }}
   pool:
     vmImage: 'ubuntu-16.04'
