@@ -38,7 +38,7 @@ jobs:
 
         rsync -vau dist/ out/
 
-        cd dist
+        cd out
         git add --all .
         git config user.name "Azure Pipelines"
         git config user.email "${COMMIT_EMAIL}"
