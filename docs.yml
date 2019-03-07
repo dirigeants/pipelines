@@ -45,7 +45,7 @@ jobs:
       env:
         BRANCH: $(Build.SourceBranchName)
         BUILD_REASON: $(Build.Reason)
-        MASTER_ONLY: $(masterOnly)
+        MASTER_ONLY: ${{ parameters.masterOnly }}
         COMMIT_EMAIL: $(commitEmail)
         GH_TOKEN: $(ghToken)
         GH_REF: ${{ parameters.ghRef }}
