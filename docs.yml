@@ -19,7 +19,7 @@ jobs:
     - bash: |
         set -e
         
-        if [ ("$MASTER_ONLY" == "true" && "$BRANCH" != "master") || "$BUILD_REASON" != "IndividualCI" ]; then
+        if [[ ("$MASTER_ONLY" = "true" && "$BRANCH" != "master") || "$BUILD_REASON" != "IndividualCI" ]]; then
           echo -e "Not building for a non branch push - building without deploying."
           yarn run docs
           exit 0
