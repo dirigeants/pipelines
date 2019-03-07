@@ -2,6 +2,7 @@ parameters:
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
+  versionSpec: '10.x'
 
 jobs:
 - job: "Documentation"
@@ -11,7 +12,7 @@ jobs:
   steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '10.x'
+        versionSpec: ${{ parameters.versionSpec }}
       displayName: 'Install Node.js'
     - script: yarn
     - bash: |
