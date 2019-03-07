@@ -1,4 +1,5 @@
 parameters:
+  masterOnly: 'false'
   targetBranch: ''
   ghRef: ''
   dependsOn: ''
@@ -18,13 +19,13 @@ jobs:
     - bash: |
         set -e
         
-        if [ "$BRANCH" != "master" -o "$BUILD_REASON" != "IndividualCI" ]; then
-          echo -e "Not building for a non master branch push - building without deploying."
+        if [ ("$MASTER_ONLY" == "true" && "$BRANCH" != "master") || "$BUILD_REASON" != "IndividualCI" ]; then
+          echo -e "Not building for a non branch push - building without deploying."
           yarn run docs
           exit 0
         fi
 
-        echo -e "Building for a master branch push - building and deploying."
+        echo -e "Building for a branch push - building and deploying."
 
         REPO=$(git config remote.origin.url)
         SHA=$(git rev-parse --verify HEAD)
@@ -44,6 +45,7 @@ jobs:
       env:
         BRANCH: $(Build.SourceBranchName)
         BUILD_REASON: $(Build.Reason)
+        MASTER_ONLY: $(masterOnly)
         COMMIT_EMAIL: $(commitEmail)
         GH_TOKEN: $(ghToken)
         GH_REF: ${{ parameters.ghRef }}
