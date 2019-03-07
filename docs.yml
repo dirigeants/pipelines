@@ -6,8 +6,8 @@ parameters:
 
 jobs:
 - job: "Documentation"
-  dependsOn: ${{ dependsOn }}
-  condition: ${{ condition }}
+  dependsOn: ${{ parameters.dependsOn }}
+  condition: ${{ parameters.condition }}
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
@@ -47,5 +47,5 @@ jobs:
         BUILD_REASON: $(Build.Reason)
         COMMIT_EMAIL: $(commitEmail)
         GH_TOKEN: $(ghToken)
-        GH_REF: ${{ ghRef }}
-        TARGET_BRANCH: ${{ targetBranch }}
+        GH_REF: ${{ parameters.ghRef }}
+        TARGET_BRANCH: ${{ parameters.targetBranch }}
