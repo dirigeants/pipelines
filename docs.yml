@@ -1,9 +1,13 @@
 parameters:
   targetBranch: ''
   ghRef: ''
+  dependsOn: ''
+  condition: success()
 
 jobs:
 - job: "Documentation"
+  dependsOn: ${{ dependsOn }}
+  condition: ${{ condition }}
   pool:
     vmImage: 'ubuntu-16.04'
   steps:
