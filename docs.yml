@@ -42,5 +42,5 @@ steps:
       BUILD_REASON: $(Build.Reason)
       COMMIT_EMAIL: $(commitEmail)
       GH_TOKEN: $(ghToken)
-      GH_REF: ${{ ghRef}}
+      GH_REF: ${{ ghRef }}
       TARGET_BRANCH: ${{ targetBranch }}
