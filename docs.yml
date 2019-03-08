@@ -18,6 +18,7 @@ jobs:
         versionSpec: ${{ parameters.versionSpec }}
       displayName: 'Install Node.js'
     - script: yarn
+      displayName: 'Install Dependencies'
     - bash: |
         set -e
         
@@ -53,3 +54,4 @@ jobs:
         GH_TOKEN: $(ghToken)
         GH_REF: ${{ parameters.ghRef }}
         TARGET_BRANCH: ${{ parameters.targetBranch }}
+      displayName: 'Build ${{ parameters.type }}'

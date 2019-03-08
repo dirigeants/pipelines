@@ -11,4 +11,6 @@ jobs:
         versionSpec: ${{ parameters.versionSpec }}
       displayName: 'Install Node.js'
     - script: yarn
+      displayName: 'Install Dependencies'
     - script: 'yarn test:lint'
+      displayName: 'Test Lint'
