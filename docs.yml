@@ -1,9 +1,9 @@
 parameters:
+  ghRef: ''
+  targetBranch: 'gh-pages'
   masterOnly: 'false'
   type: 'Docs'
   command: 'docs'
-  targetBranch: ''
-  ghRef: ''
   dependsOn: ''
   versionSpec: '10.x'
 
