@@ -17,14 +17,14 @@ resources:
 
 > **Note:** You will have to allow your pipeline to use your github credentials to be used to fetch templates from other
 repos.
-
-You can do this by going to your Project Settings (in Azure DevOps):
-1. Pipelines
-1. Service Connections
-1. (Your username/organization name should be listed, otherwise the endpoint will be whatever is listed)
-1. Policies
-1. Check: `Allow all pipelines to use this endpoint`
-1. Save Changes
+>
+> You can do this by going to your Project Settings (in Azure DevOps):
+> 1. Pipelines
+> 1. Service Connections
+> 1. (Your username/organization name should be listed, otherwise the endpoint will be whatever is listed)
+> 1. Policies
+> 1. Check: `Allow all pipelines to use this endpoint`
+> 1. Save Changes
 
 ### Lint Template
 
@@ -34,7 +34,7 @@ defined in your `package.json` (meaning you can use any linter or any combinatio
 ```yml
 jobs:
   - template: lint.yml@templates
-    # Optional: Whether or not you want to use all defaults
+    # Optional if you want to use all defaults
     parameters:
       # Optional: The version of Node.js you want to use,
       # valid values are ['8.x', '9.x', '10.x', '11.x', ...]
