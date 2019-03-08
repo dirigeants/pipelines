@@ -1,2 +1,3 @@
-# pipelines
-azure pipeline templates
+# Pipelines
+
+Azure Pipeline Templates
