@@ -62,6 +62,8 @@ jobs:
       targetBranch: 'gh-pages'
       # Optional: Will only commit the build for master branch if this is set to 'true'
       masterOnly: 'false'
+      # Optional: Will sync the whole /dist folder to the branch. If false, will rename /dist/docs.json to /out/branchName.json
+      sync: 'true'
       # Optional: The name of the job, and is also used in the commit message
       type: 'Documentation'
       # Optional: The name of the npm script to build your project

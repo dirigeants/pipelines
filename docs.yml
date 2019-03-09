@@ -6,6 +6,7 @@ parameters:
   command: 'docs'
   dependsOn: ''
   versionSpec: '10.x'
+  sync: 'true'
 
 jobs:
 - job: ${{ parameters.type }}
@@ -37,7 +38,11 @@ jobs:
 
         yarn run ${{ parameters.command }}
 
-        rsync -vau dist/ out/
+        if [[ "$SYNC" = "true" ]]; then
+          rsync -vau dist/ out/
+        else
+          mv dist/docs.json out/${BRANCH//\//_}.json
+        fi
 
         cd out
         git add --all .
@@ -54,4 +59,5 @@ jobs:
         GH_TOKEN: $(ghToken)
         GH_REF: ${{ parameters.ghRef }}
         TARGET_BRANCH: ${{ parameters.targetBranch }}
+        SYNC: ${{ parameters.sync }}
       displayName: 'Build ${{ parameters.type }}'
